@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\InstructorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/student', function () {
+Route::get('/index', function () {
     return view('admin.index');
+});
+
+Route::group(['prefix'=>'admin'],function(){
+    Route::resources([
+        'instructors'=>InstructorController::class,
+    ]);
+
 });

@@ -32,15 +32,55 @@
 
 
           <li class="sidebar-nav-item">
-            <a href="./layouts/tables_data.html" class="sidebar-nav-link">
-              <span class="sidebar-nav-abbr">
-                ST
-              </span>
-              <span class="sidebar-nav-name">
-                ALL Students
-              </span>
-            </a>
-          </li>
+                <a href="./layouts/tables_data.html" class="sidebar-nav-link">
+                  <span class="sidebar-nav-abbr">
+                    ST
+                  </span>
+                  <span class="sidebar-nav-name">
+                    All Students
+                  </span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="./layouts/tables_data.html" class="sidebar-nav-link">
+                  <span class="sidebar-nav-abbr">
+                    TO
+                  </span>
+                  <span class="sidebar-nav-name">
+                    All Topics
+                  </span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="./layouts/tables_data.html" class="sidebar-nav-link">
+                  <span class="sidebar-nav-abbr">
+                    CO
+                  </span>
+                  <span class="sidebar-nav-name">
+                    All Cources
+                  </span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="./layouts/tables_data.html" class="sidebar-nav-link">
+                  <span class="sidebar-nav-abbr">
+                    DE
+                  </span>
+                  <span class="sidebar-nav-name">
+                    All Departments
+                  </span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="{{ route('instructors.index') }}" class="sidebar-nav-link">
+                  <span class="sidebar-nav-abbr">
+                    IN
+                  </span>
+                  <span class="sidebar-nav-name">
+                    All Instructors
+                  </span>
+                </a>
+              </li>
         </ul>
       </li>
 
@@ -99,55 +139,16 @@
               </a>
             </li>
             <li class="sidebar-nav-item">
-                <a href="./layouts/tables_data.html" class="sidebar-nav-link">
-                  <span class="sidebar-nav-abbr">
-                    ST
-                  </span>
-                  <span class="sidebar-nav-name">
-                    All Students
-                  </span>
-                </a>
-              </li>
-              <li class="sidebar-nav-item">
-                <a href="./layouts/tables_data.html" class="sidebar-nav-link">
-                  <span class="sidebar-nav-abbr">
-                    TO
-                  </span>
-                  <span class="sidebar-nav-name">
-                    All Topics
-                  </span>
-                </a>
-              </li>
-              <li class="sidebar-nav-item">
-                <a href="./layouts/tables_data.html" class="sidebar-nav-link">
-                  <span class="sidebar-nav-abbr">
-                    CO
-                  </span>
-                  <span class="sidebar-nav-name">
-                    All Cources
-                  </span>
-                </a>
-              </li>
-              <li class="sidebar-nav-item">
-                <a href="./layouts/tables_data.html" class="sidebar-nav-link">
-                  <span class="sidebar-nav-abbr">
-                    DE
-                  </span>
-                  <span class="sidebar-nav-name">
-                    All Departments
-                  </span>
-                </a>
-              </li>
-              <li class="sidebar-nav-item">
-                <a href="./layouts/tables_data.html" class="sidebar-nav-link">
+                <a href="{{ route('instructors.create') }}" class="sidebar-nav-link">
                   <span class="sidebar-nav-abbr">
                     IN
                   </span>
                   <span class="sidebar-nav-name">
-                    All Instructors
+                    ADD Instructor
                   </span>
                 </a>
               </li>
+            
 
             </ul>
           </li>
