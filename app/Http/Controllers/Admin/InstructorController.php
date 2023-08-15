@@ -14,7 +14,15 @@ class InstructorController extends Controller
      */
     public function index()
     {
+
         //
+
+        $data=[
+            ['id'=>'1', 'name'=>'ahmed','salary'=>'4000','address'=>'cairo'],
+            ['id'=>'2', 'name'=>'khaled','salary'=>'5000','address'=>'alex']
+        ];
+        return view('admin.instructors.index',['data'=>$data]);
+
     }
 
     /**
@@ -24,7 +32,13 @@ class InstructorController extends Controller
      */
     public function create()
     {
-        //
+
+        $data=[
+            ['id'=>'1', 'name'=>'ahmed','salary'=>'4000','address'=>'cairo'],
+            ['id'=>'2', 'name'=>'khaled','salary'=>'5000','address'=>'alex']
+        ];
+        return view('admin.instructors.create',['instData'=>$data]);
+
     }
 
     /**
@@ -35,7 +49,9 @@ class InstructorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        return $request;
+
     }
 
     /**
@@ -46,7 +62,10 @@ class InstructorController extends Controller
      */
     public function show($id)
     {
-        //
+
+        return view('admin.instructors.show',['id'=>$id]);
+
+
     }
 
     /**

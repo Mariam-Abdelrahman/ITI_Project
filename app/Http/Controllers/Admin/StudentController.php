@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -14,7 +15,12 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return view('admin.students.index');
+        $data=Student::get();
+        // [
+        //     ['id'=>'1', 'fname'=>'ahmed','lname'=>'ali','age'=>'20','address'=>'cairo'],
+        //     ['id'=>'2', 'fname'=>'khaled','lname'=>'ahmed','age'=>'21','address'=>'alex']
+        // ];
+        return view('admin.students.index',['data'=>$data]);
     }
 
     /**
@@ -24,7 +30,11 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        $data=[
+            ['id'=>'1', 'fname'=>'ahmed','lname'=>'ali','age'=>'20','address'=>'cairo'],
+            ['id'=>'2', 'fname'=>'khaled','lname'=>'ahmed','age'=>'21','address'=>'alex']
+        ];
+        return view('admin.students.create',['instData'=>$data]);
     }
 
     /**
@@ -35,7 +45,16 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Student::create([
+         'id'=>$request->id,
+         'fname'=>$request->fname,
+         'lname'=>$request->lname,
+         'age'=>$request->age,
+         'address'=>$request->address
+
+        ]);
+        return redirect()->back()->with('msg','Added successsfully.....');
+
     }
 
     /**
@@ -46,7 +65,8 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Student::findorfail($id);
+        return view('admin.students.show',['data'=>$data]);
     }
 
     /**
@@ -57,7 +77,8 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Student::findorfail($id);
+        return view('admin.students.edit',['data'=>$data]);
     }
 
     /**
@@ -69,7 +90,15 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $stu = Student::findorfail($id);
+         $stu->update([
+            'id'=>$request->id,
+         'fname'=>$request->fname,
+         'lname'=>$request->lname,
+         'age'=>$request->age,
+         'address'=>$request->address
+         ]);
+         return redirect()->route('students.index')->with('msg','Updated successsfully.....');
     }
 
     /**
@@ -80,6 +109,9 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $stu = Student::findorfail($id);
+         $stu->delete();
+         return redirect()->route('students.index')->with('msg','Deleted successsfully.....');
+
     }
 }

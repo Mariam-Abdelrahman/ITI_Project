@@ -1,4 +1,4 @@
-<div class="adminx-sidebar expand-hover push">
+<div class="adminx-sidebar expand-hover push" style="background-color: rgb(234, 160, 160)">
     <ul class="sidebar-nav">
       <li class="sidebar-nav-item">
         <a href="index.html" class="sidebar-nav-link active">
@@ -6,7 +6,7 @@
             <i data-feather="home"></i>
           </span>
           <span class="sidebar-nav-name">
-            Dashboard
+           ITI
           </span>
           <span class="sidebar-nav-end">
 
@@ -32,74 +32,7 @@
 
 
           <li class="sidebar-nav-item">
-            <a href="./layouts/tables_data.html" class="sidebar-nav-link">
-              <span class="sidebar-nav-abbr">
-                ST
-              </span>
-              <span class="sidebar-nav-name">
-                ALL Students
-              </span>
-            </a>
-          </li>
-        </ul>
-      </li>
-
-      <li class="sidebar-nav-item">
-        <a class="sidebar-nav-link collapsed" data-toggle="collapse" href="#navForms" aria-expanded="false" aria-controls="navForms">
-          <span class="sidebar-nav-icon">
-            <i data-feather="edit"></i>
-          </span>
-          <span class="sidebar-nav-name">
-            Forms
-          </span>
-          <span class="sidebar-nav-end">
-            <i data-feather="chevron-right" class="nav-collapse-icon"></i>
-          </span>
-        </a>
-
-        <ul class="sidebar-sub-nav collapse" id="navForms">
-            <li class="sidebar-nav-item">
-              <a href="./layouts/form_elements.html" class="sidebar-nav-link">
-                <span class="sidebar-nav-abbr">
-                  ST
-                </span>
-                <span class="sidebar-nav-name">
-                 ADD Student
-                </span>
-              </a>
-            </li>
-            <li class="sidebar-nav-item">
-              <a href="./layouts/form_elements.html" class="sidebar-nav-link">
-                <span class="sidebar-nav-abbr">
-                  TO
-                </span>
-                <span class="sidebar-nav-name">
-                 ADD Tobic
-                </span>
-              </a>
-            </li>
-            <li class="sidebar-nav-item">
-              <a href="./layouts/form_elements.html" class="sidebar-nav-link">
-                <span class="sidebar-nav-abbr">
-                  CO
-                </span>
-                <span class="sidebar-nav-name">
-                 ADD Course
-                </span>
-              </a>
-            </li>
-            <li class="sidebar-nav-item">
-              <a href="./layouts/form_elements.html" class="sidebar-nav-link">
-                <span class="sidebar-nav-abbr">
-                  DE
-                </span>
-                <span class="sidebar-nav-name">
-                 ADD Department
-                </span>
-              </a>
-            </li>
-            <li class="sidebar-nav-item">
-                <a href="./layouts/tables_data.html" class="sidebar-nav-link">
+                <a href="{{ route('students.index') }}" class="sidebar-nav-link">
                   <span class="sidebar-nav-abbr">
                     ST
                   </span>
@@ -139,7 +72,7 @@
                 </a>
               </li>
               <li class="sidebar-nav-item">
-                <a href="./layouts/tables_data.html" class="sidebar-nav-link">
+                <a href="{{ route('instructors.index') }}" class="sidebar-nav-link">
                   <span class="sidebar-nav-abbr">
                     IN
                   </span>
@@ -148,6 +81,74 @@
                   </span>
                 </a>
               </li>
+        </ul>
+      </li>
+
+      <li class="sidebar-nav-item">
+        <a class="sidebar-nav-link collapsed" data-toggle="collapse" href="#navForms" aria-expanded="false" aria-controls="navForms">
+          <span class="sidebar-nav-icon">
+            <i data-feather="edit"></i>
+          </span>
+          <span class="sidebar-nav-name">
+            ADD
+          </span>
+          <span class="sidebar-nav-end">
+            <i data-feather="chevron-right" class="nav-collapse-icon"></i>
+          </span>
+        </a>
+
+        <ul class="sidebar-sub-nav collapse" id="navForms">
+            <li class="sidebar-nav-item">
+              <a href="{{ route('students.create') }}" class="sidebar-nav-link">
+                <span class="sidebar-nav-abbr">
+                  ST
+                </span>
+                <span class="sidebar-nav-name">
+                 ADD Student
+                </span>
+              </a>
+            </li>
+            <li class="sidebar-nav-item">
+              <a href="./layouts/form_elements.html" class="sidebar-nav-link">
+                <span class="sidebar-nav-abbr">
+                  TO
+                </span>
+                <span class="sidebar-nav-name">
+                 ADD Tobic
+                </span>
+              </a>
+            </li>
+            <li class="sidebar-nav-item">
+              <a href="./layouts/form_elements.html" class="sidebar-nav-link">
+                <span class="sidebar-nav-abbr">
+                  CO
+                </span>
+                <span class="sidebar-nav-name">
+                 ADD Course
+                </span>
+              </a>
+            </li>
+            <li class="sidebar-nav-item">
+              <a href="./layouts/form_elements.html" class="sidebar-nav-link">
+                <span class="sidebar-nav-abbr">
+                  DE
+                </span>
+                <span class="sidebar-nav-name">
+                 ADD Department
+                </span>
+              </a>
+            </li>
+            <li class="sidebar-nav-item">
+                <a href="{{ route('instructors.create') }}" class="sidebar-nav-link">
+                  <span class="sidebar-nav-abbr">
+                    IN
+                  </span>
+                  <span class="sidebar-nav-name">
+                    ADD Instructor
+                  </span>
+                </a>
+              </li>
+
 
             </ul>
           </li>

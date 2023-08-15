@@ -1,5 +1,5 @@
 @extends('layouts.admin.master')
-@section('title','All Students')
+@section('title','All Insteuctors')
 <div class="adminx-content">
     @section('bread-crumb')
             <!-- BreadCrumb -->
@@ -7,16 +7,13 @@
               <ol class="breadcrumb adminx-page-breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                 <li class="breadcrumb-item"><a href="#">Tables</a></li>
-                <li class="breadcrumb-item active  aria-current="page">All Students</li>
+                <li class="breadcrumb-item active  aria-current="page">All Instructors</li>
               </ol>
             </nav>
            @endsection
            @section('content')
             <div class="pb-3">
-                @if (Session::has('msg'))
-                <div class="alert alert-success"> {{ Session::get('msg') }}</div>
-                @endif
-              <h1>Students Tables</h1>
+              <h1>Insrructor Tables</h1>
             </div>
             <div class="row">
               <div class="col">
@@ -32,11 +29,10 @@
                             </label>
                           </th>
                           <th scope="col">ID</th>
-                          <th scope="col">First Name</th>
-                          <th scope="col">Last Name</th>
-                          <th scope="col">age</th>
-                          <th scope="col">address</th>
-
+                          <th scope="col">Name</th>
+                          <th scope="col">Salary</th>
+                          <th scope="col">Adress</th>
+                          <th scope="col">Actions</th>
                         </tr>
                       </thead>
                        <tbody>
@@ -48,20 +44,15 @@
                               <span class="custom-control-indicator"></span>
                             </label>
                           </th>
-
+                          <td>{{ $loop->iteration }}</td>
                             <td>{{ $value['id'] }}</td>
-                            <td>{{ $value['fname'] }}</td>
-                            <td>{{ $value['lname'] }}</td>
-                            <td>{{ $value['age'] }}</td>
+                            <td>{{ $value['name'] }}</td>
+                            <td>{{ $value['salary'] }}</td>
                             <td>{{ $value['address'] }}</td>
                           <td>
-                            <a href="{{ route('students.show',$value['id']) }}" class="btn btn-primary">show</a>
-                            <a href="{{ route('students.edit',$value['id']) }}" class="btn btn-success">Edit</a>
-                            <form style="display: inline-block" action="{{ route('students.destroy',$value['id']) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <input type="submit" value="delete" class="btn btn-danger">
-                            </form>
+                            <a href="{{ route('instructors.show',$value['id']) }}" class="btn btn-primary">show</a>
+                            <button class="btn btn-sm btn-primary">Edit</button>
+                            <button class="btn btn-sm btn-danger">Delete</button>
                           </td>
                         </tr>
                         @empty
@@ -76,10 +67,10 @@
               </div>
             </div>
           @endsection
-
-
+        
+     
       <!-- // Main Content -->
-
+    
         @section('js')
          <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
