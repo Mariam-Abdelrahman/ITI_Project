@@ -1,5 +1,5 @@
 @extends('layouts.admin.master')
-@section('title','ADD Student')
+@section('title','Edit Student')
 <div class="adminx-content">
     @section('bread-crumb')
             <!-- BreadCrumb -->
@@ -7,7 +7,7 @@
               <ol class="breadcrumb adminx-page-breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                 <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                <li class="breadcrumb-item active  aria-current="page">ADD Student</li>
+                <li class="breadcrumb-item active  aria-current="page">Edit Student </li>
               </ol>
             </nav>
            @endsection
@@ -48,32 +48,38 @@
                     </nav>
                   </div>
                   <div class="card-body collapse show" id="card1">
-                    <form action="{{ route('students.store') }}" enctype="multipart/form-data" method="post">
+                    <form action="{{ route('students.update', $data->id) }}" enctype="multipart/form-data" method="post">
                     @csrf
+                    @method('PUT')
                       <div class="form-group">
                         <label class="form-label" for="exampleInputEmail1">ID</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Id" name="id">
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Id" name="id"
+                        value="{{ $data->id }}">
                       </div>
                       <div class="form-group">
                         <label class="form-label" for="exampleInputEmail1">First Name</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name" name="fname">
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name" name="fname"
+                        value="{{ $data->fname }}">
                       </div>
                       <div class="form-group">
                         <label class="form-label" for="exampleInputEmail1">Last Name</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name" name="lname">
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name" name="lname"
+                        value="{{ $data->lname }}">
                       </div>
                       <div class="form-group">
                         <label class="form-label" for="exampleInputEmail1">age</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Salary" name="age">
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Salary" name="age"
+                        value="{{ $data->age }}">
                       </div>
                       <div class="form-group">
                         <label class="form-label" for="exampleInputPassword1">Address</label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Adress" name="address">
+                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Adress" name="address"
+                        value="{{ $data->address }}">
                         <small id="emailHelp" class="form-text text-muted">We'll never share your data with anyone else.</small>
 
                       </div>
 
-                      <button type="submit" class="btn btn-primary">ADD</button>
+                      <button type="submit" class="btn btn-primary">Edit</button>
                     </form>
                   </div>
                 </div>

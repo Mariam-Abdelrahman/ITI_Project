@@ -1,7 +1,8 @@
 <?php
-
-use App\Http\Controllers\Admin\InstructorController;
+use  App\Http\Controllers\Admin\InstructorController;
+use App\Http\Controllers\Admin\StudentController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,13 +18,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/index', function () {
+Route::get('/admin', function () {
     return view('admin.index');
-});
+})->name('admin.index');
 
 Route::group(['prefix'=>'admin'],function(){
     Route::resources([
         'instructors'=>InstructorController::class,
+        'students'=>StudentController::class,
     ]);
 
 });

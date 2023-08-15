@@ -1,4 +1,4 @@
-<div class="adminx-sidebar expand-hover push">
+<div class="adminx-sidebar expand-hover push" >
     <ul class="sidebar-nav">
       <li class="sidebar-nav-item">
         <a href="index.html" class="sidebar-nav-link active">
@@ -6,7 +6,7 @@
             <i data-feather="home"></i>
           </span>
           <span class="sidebar-nav-name">
-            Dashboard
+           ITI
           </span>
           <span class="sidebar-nav-end">
 
@@ -32,7 +32,7 @@
 
 
           <li class="sidebar-nav-item">
-                <a href="./layouts/tables_data.html" class="sidebar-nav-link">
+                <a href="{{ route('students.index') }}" class="sidebar-nav-link">
                   <span class="sidebar-nav-abbr">
                     ST
                   </span>
@@ -90,7 +90,7 @@
             <i data-feather="edit"></i>
           </span>
           <span class="sidebar-nav-name">
-            Forms
+            ADD
           </span>
           <span class="sidebar-nav-end">
             <i data-feather="chevron-right" class="nav-collapse-icon"></i>
@@ -99,7 +99,7 @@
 
         <ul class="sidebar-sub-nav collapse" id="navForms">
             <li class="sidebar-nav-item">
-              <a href="./layouts/form_elements.html" class="sidebar-nav-link">
+              <a href="{{ route('students.create') }}" class="sidebar-nav-link">
                 <span class="sidebar-nav-abbr">
                   ST
                 </span>
@@ -148,7 +148,7 @@
                   </span>
                 </a>
               </li>
-            
+
 
             </ul>
           </li>

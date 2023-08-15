@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand justify-content-between fixed-top">
-        <a class="navbar-brand mb-0 h1 d-none d-md-block" href="index.html">
-          <img src="{{ URL::asset('assests/demo/img/logo.png') }}" class="navbar-brand-image d-inline-block align-top mr-2" alt="">
-          AdminX
+<nav class="navbar navbar-expand justify-content-between fixed-top" >
+        <a class="navbar-brand mb-0 h1 d-none d-md-block" href="{{ route('admin.index') }}">
+          <img src="{{ URL::asset('assests/demo/img/logo.PNG') }}" class="navbar-brand-image d-inline-block align-top mr-2" alt="">
+          Admin of Information Technology Institute
         </a>
 
         <form class="form-inline form-quicksearch d-none d-md-block mx-auto">
@@ -22,7 +22,7 @@
         </div>
 
         <ul class="navbar-nav d-flex justify-content-end mr-2">
-         
+
            <li class="nav-item dropdown">
             <a class="nav-link avatar-with-name" id="navbarDropdownMenuLink" data-toggle="dropdown" href="#">
               <img src="{{ URL::asset('assests/demo/img/user.png') }}" class="d-inline-block align-top" alt="">
