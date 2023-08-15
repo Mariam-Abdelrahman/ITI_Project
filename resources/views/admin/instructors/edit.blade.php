@@ -7,7 +7,7 @@
               <ol class="breadcrumb adminx-page-breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                 <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                <li class="breadcrumb-item active  aria-current="page">ADD Instructor</li>
+                <li class="breadcrumb-item active"  aria-current="page">edit Instructor data</li>
               </ol>
             </nav>
            @endsection
@@ -48,28 +48,29 @@
                   </div>
 
                   <div class="card-body collapse show" id="card1">
-                    <form action="{{ route('instructors.store') }}" enctype="multipart/form-data" method="post">
+                    <form action="{{ route('instructors.update',$data['id']) }}" enctype="multipart/form-data" method="post">
                     @csrf
+                    @method('PUT')
                       <div class="form-group">
                         <label class="form-label" for="exampleInputEmail1">name</label>
-                        <input type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Enter Name" name="name">
+                        <input type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Enter Name" name="name" value="{{ $data['name'] }}">
                       </div>
                       <div class="form-group">
                         <label class="form-label" for="exampleInputEmail1">Salary</label>
-                        <input type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Enter Salary" name="salary">
+                        <input type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Enter Salary" name="salary" value="{{ $data['salary'] }}">
                       </div>
                       <div class="form-group">
                         <label class="form-label" for="exampleInputPassword1">Address</label>
-                        <input type="text" class="form-control"  placeholder="Adress" name="address">
+                        <input type="text" class="form-control"  placeholder="Adress" name="address" value="{{ $data['address'] }}">
                       </div>
                       <div class="form-group">
                         <label class="form-label" for="exampleInputPassword1">Hour Rate</label>
-                        <input type="number" class="form-control"  placeholder="Hour Rate" name="hourRate">
+                        <input type="number" class="form-control"  placeholder="Hour Rate" name="hourRate" value="{{ $data['hourRate'] }}">
                         <small id="emailHelp" class="form-text text-muted">We'll never share your data with anyone else.</small>
 
                       </div>
 
-                      <button type="submit" class="btn btn-primary">ADD</button>
+                      <button type="submit" class="btn btn-primary">Update</button>
                     </form>
                   </div>
                 </div>

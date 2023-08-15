@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Instructor;
 use Illuminate\Http\Request;
 
 class InstructorController extends Controller
@@ -14,11 +15,8 @@ class InstructorController extends Controller
      */
     public function index()
     {
-        $data=[
-            ['id'=>'1', 'name'=>'ahmed','salary'=>'4000','address'=>'cairo'],
-            ['id'=>'2', 'name'=>'khaled','salary'=>'5000','address'=>'alex']
-        ];
-        return view('admin.instructors.index',['data'=>$data]);
+        $instructors = Instructor::all();
+        return view('admin.instructors.index',['instructors'=>$instructors]);
     }
 
     /**
@@ -28,11 +26,8 @@ class InstructorController extends Controller
      */
     public function create()
     {
-        $data=[
-            ['id'=>'1', 'name'=>'ahmed','salary'=>'4000','address'=>'cairo'],
-            ['id'=>'2', 'name'=>'khaled','salary'=>'5000','address'=>'alex']
-        ];
-        return view('admin.instructors.create',['instData'=>$data]);
+
+        return view('admin.instructors.create');
     }
 
     /**
@@ -43,7 +38,15 @@ class InstructorController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+
+        Instructor::create([
+            'name'=> $request->name,
+            'salary'=> $request->salary,
+            'address'=> $request->address,
+            'hourRate'=> $request->hourRate,
+        ]);
+
+        return redirect()->back()->with('msg','Added..');
     }
 
     /**
@@ -54,7 +57,9 @@ class InstructorController extends Controller
      */
     public function show($id)
     {
-        return view('admin.instructors.show',['id'=>$id]);
+        $instructor=Instructor::findorfail($id);
+        return view('admin.instructors.show',['instructor'=>$instructor]);
+
 
     }
 
@@ -66,7 +71,8 @@ class InstructorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data=Instructor::findorfail($id);
+        return view('admin.instructors.edit',['data'=>$data]);
     }
 
     /**
@@ -78,7 +84,15 @@ class InstructorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $instructor=Instructor::findorfail($id);
+        $instructor->update([
+            'name'=> $request->name,
+            'salary'=> $request->salary,
+            'address'=> $request->address,
+            'hourRate'=> $request->hourRate,
+        ]);
+
+        return redirect()->route('instructors.edit',$instructor['id'])->with('msg','updated..');
     }
 
     /**
@@ -89,6 +103,9 @@ class InstructorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $instructor=Instructor::findorfail($id);
+        $instructor->delete();
+        return redirect()->route('instructors.index')->with('msg','deleted..');
+
     }
 }

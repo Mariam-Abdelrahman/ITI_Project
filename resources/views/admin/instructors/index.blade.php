@@ -12,8 +12,11 @@
             </nav>
            @endsection
            @section('content')
+           @if(Session::has('msg'))
+            <div class="alert alert-success">{{ Session::get('msg') }}</div>
+            @endif
             <div class="pb-3">
-              <h1>Insrructor Tables</h1>
+              <h1>Instructors Table</h1>
             </div>
             <div class="row">
               <div class="col">
@@ -36,7 +39,7 @@
                         </tr>
                       </thead>
                        <tbody>
-                        @forelse ($data as $value)
+                        @forelse ($instructors as $instructor)
                         <tr>
                           <th scope="row">
                             <label class="custom-control custom-checkbox m-0 p-0">
@@ -44,15 +47,19 @@
                               <span class="custom-control-indicator"></span>
                             </label>
                           </th>
-                          <td>{{ $loop->iteration }}</td>
-                            <td>{{ $value['id'] }}</td>
-                            <td>{{ $value['name'] }}</td>
-                            <td>{{ $value['salary'] }}</td>
-                            <td>{{ $value['address'] }}</td>
+                            <td>{{ $instructor['id'] }}</td>
+                            <td>{{ $instructor['name'] }}</td>
+                            <td>{{ $instructor['salary'] }}</td>
+                            <td>{{ $instructor['address'] }}</td>
                           <td>
-                            <a href="{{ route('instructors.show',$value['id']) }}" class="btn btn-primary">show</a>
-                            <button class="btn btn-sm btn-primary">Edit</button>
-                            <button class="btn btn-sm btn-danger">Delete</button>
+                            <a href="{{ route('instructors.show',$instructor['id']) }}" class="btn btn-sm btn-primary">show</a>
+                            <a href="{{ route('instructors.edit',$instructor['id']) }}" class="btn btn-sm btn-success">Edit</a>
+                            {{-- <a href="{{ route('instructors.show',$instructor['id']) }}" class="btn btn-sm btn-danger">Delete</a> --}}
+                            <form action="{{ route('instructors.destroy',$instructor['id']) }}" method="post" style="display: inline-block">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit" value="delete" class="btn btn-sm btn-danger">
+                            </form>
                           </td>
                         </tr>
                         @empty
@@ -67,10 +74,10 @@
               </div>
             </div>
           @endsection
-        
-     
+
+
       <!-- // Main Content -->
-    
+
         @section('js')
          <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
