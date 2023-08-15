@@ -1,6 +1,11 @@
 <?php
-
+use App\Http\Controllers\Admin\StudentController;
+use App\Http\Controllers\Admin\DepartmentController;
+use App\Http\Controllers\Admin\TopicController;
+use App\Http\Controllers\Admin\InstructorController;
+use App\Http\Controllers\Admin\CoursesController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +21,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/student', function () {
-    return view('admin.index');
+// Route::get('/student', function () {
+//     return view('admin.index');
+// });
+Route::group((['prefix','admin']),function () {
+    Route::resource([
+        'students'=>StudentController::class,
+        'departments'=>DepartmentController::class,
+        'topics'=>TopicController::class,
+        'instructors'=>InstructorController::class,
+        'courses'=>CoursesController::class
+    ]);
+
 });
