@@ -25,6 +25,9 @@ Route::get('/admin', function () {
 })->name('admin.index');
 
 Route::group(['prefix'=>'admin'],function(){
+    Route::get('students/archive',[StudentController::class,'archive'])->name('students.archive');
+    Route::post('students/restore/{id}',[StudentController::class,'restore'])->name('students.restore');
+    Route::delete('students/deleteArchive/{id}',[StudentController::class,'deleteArchive'])->name('students.deleteArchive');
     Route::resources([
         'instructors'=>InstructorController::class,
         'students'=>StudentController::class,

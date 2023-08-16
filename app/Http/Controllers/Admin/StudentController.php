@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StudentRequest;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -30,11 +31,11 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $data=[
-            ['id'=>'1', 'fname'=>'ahmed','lname'=>'ali','age'=>'20','address'=>'cairo'],
-            ['id'=>'2', 'fname'=>'khaled','lname'=>'ahmed','age'=>'21','address'=>'alex']
-        ];
-        return view('admin.students.create',['instData'=>$data]);
+        // $data=[
+        //     ['id'=>'1', 'fname'=>'ahmed','lname'=>'ali','age'=>'20','address'=>'cairo'],
+        //     ['id'=>'2', 'fname'=>'khaled','lname'=>'ahmed','age'=>'21','address'=>'alex']
+        // ];
+        return view('admin.students.create');
     }
 
     /**
@@ -43,7 +44,7 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StudentRequest $request)
     {
         Student::create([
          'id'=>$request->id,
@@ -88,7 +89,7 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StudentRequest $request, $id)
     {
         $stu = Student::findorfail($id);
          $stu->update([
@@ -114,4 +115,21 @@ class StudentController extends Controller
          return redirect()->route('students.index')->with('msg','Deleted successsfully.....');
 
     }
+    public function archive(){
+        $data= Student::onlyTrashed()->select('id','fname','lname','age','address')->get();
+        return view('admin\students\archive',['data'=>$data]);
+    }
+    public function restore($id){
+        $stu=Student::withTrashed()->findOrFail($id);
+        $stu->restore();
+       return redirect()->back()->with('msg','Restored successsfully.....');
+
+    }
+    public function deleteArchive($id){
+        $stu=Student::withTrashed()->findOrFail($id);
+        $stu->forceDelete();
+        return redirect()->back()->with('msg','Deleted successsfully.....');
+
+        }
+
 }

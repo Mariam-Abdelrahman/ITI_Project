@@ -107,7 +107,18 @@
                  ADD Student
                 </span>
               </a>
+
             </li>
+            <li class="sidebar-nav-item">
+                <a href="{{ route('students.archive') }}" class="sidebar-nav-link">
+                  <span class="sidebar-nav-abbr">
+                    ST
+                  </span>
+                  <span class="sidebar-nav-name">
+                   Archive Student
+                  </span>
+                </a>
+              </li>
             <li class="sidebar-nav-item">
               <a href="{{ route('topics.create') }}" class="sidebar-nav-link">
                 <span class="sidebar-nav-abbr">
@@ -153,6 +164,7 @@
             </ul>
           </li>
 
+        
 
             <!-- <li class="sidebar-nav-item">
               <a href="./layouts/form_advanced.html" class="sidebar-nav-link">

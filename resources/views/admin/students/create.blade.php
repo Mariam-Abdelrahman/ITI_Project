@@ -13,6 +13,15 @@
            @endsection
            @section('content')
             <div class="pb-3">
+                     @if ($errors->any())
+                     <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $er )
+                               <li> {{ $er }}</li>
+                            @endforeach
+                        </ul>
+                      </div>
+                     @endif
                 @if (Session::has('msg'))
                 <div class="alert alert-success"> {{ Session::get('msg') }}</div>
                 @endif
@@ -52,23 +61,38 @@
                     @csrf
                       <div class="form-group">
                         <label class="form-label" for="exampleInputEmail1">ID</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Id" name="id">
+                        <input type="text" class="form-control @error('id') is-invalid @enderror" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Id" name="id">
+                        @error('id')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                       <div class="form-group">
                         <label class="form-label" for="exampleInputEmail1">First Name</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name" name="fname">
+                        <input type="text" class="form-control @error('fname') is-invalid @enderror" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name" name="fname">
+                        @error('fname')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                       <div class="form-group">
                         <label class="form-label" for="exampleInputEmail1">Last Name</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name" name="lname">
+                        <input type="text" class="form-control @error('lname') is-invalid @enderror"  id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name" name="lname">
+                        @error('lname')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                       <div class="form-group">
                         <label class="form-label" for="exampleInputEmail1">age</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Salary" name="age">
+                        <input type="text" class="form-control @error('age') is-invalid @enderror" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Salary" name="age">
+                        @error('age')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                       <div class="form-group">
                         <label class="form-label" for="exampleInputPassword1">Address</label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Adress" name="address">
+                        <input type="text" class="form-control @error('address') is-invalid @enderror" id="exampleInputPassword1" placeholder="Adress" name="address">
+                        @error('address')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                         <small id="emailHelp" class="form-text text-muted">We'll never share your data with anyone else.</small>
 
                       </div>
