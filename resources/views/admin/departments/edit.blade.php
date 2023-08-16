@@ -7,7 +7,7 @@
               <ol class="breadcrumb adminx-page-breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                 <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                <li class="breadcrumb-item active"  aria-current="page">Edit </li>
+                <li class="breadcrumb-item active"  aria-current="page">Edit Department </li>
               </ol>
             </nav>
            @endsection
@@ -61,9 +61,9 @@
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name" name="fname"
                         value="{{ $data->name }}">
                       </div>
-                      
+
                       <div class="form-group">
-                      
+
                         <small id="emailHelp" class="form-text text-muted">We'll never share your data with anyone else.</small>
 
                       </div>
