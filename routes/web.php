@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\TopicController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\CoursesController;
 
 
 /*
@@ -34,6 +35,7 @@ Route::group(['prefix'=>'admin'],function(){
         // 'departments'=>DepartmentController::class,
         'topics'=>TopicController::class,
         'departments'=>DepartmentController::class,
+        'courses'=>CoursesController::class,
     ]);
 
 });

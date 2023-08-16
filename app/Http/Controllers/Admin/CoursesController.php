@@ -1,20 +1,22 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use App\Models\course;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class CoursesController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-       //
+        $data=course::get();
+      
+        return view('admin.courses.index',['data'=>$data]);
     }
 
     /**
@@ -24,7 +26,8 @@ class CoursesController extends Controller
      */
     public function create()
     {
-        //
+    
+        return view('admin.courses.create');
     }
 
     /**
@@ -35,7 +38,16 @@ class CoursesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        course::create([
+         'id'=>$request->id,
+         'name'=> $request->name,
+         'duration'=> $request->duration,
+         'discribtion'=> $request->discribtion
+        
+
+        ]);
+        return redirect()->back()->with('msg','Added successsfully.....');
+
     }
 
     /**
@@ -46,7 +58,8 @@ class CoursesController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = course::findorfail($id);
+        return view('admin.courses.show',['data'=>$data]);
     }
 
     /**
@@ -57,7 +70,8 @@ class CoursesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = course::findorfail($id);
+        return view('admin.courses.edit',['data'=>$data]);
     }
 
     /**
@@ -69,7 +83,17 @@ class CoursesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $course=course::findorfail($id);
+
+         $course->update([
+         'id'=>$request->id,
+         'name'=> $request->name,
+         'duration'=> $request->duration,
+         'discribtion'=> $request->discribtion
+        
+         ]);
+        //   return redirect()->route('instructors.edit',$instructor['id'])->with('msg','updated..');
+        return redirect()->route('courses.edit',$course['id'])->with('msg','updated..');
     }
 
     /**
@@ -80,6 +104,11 @@ class CoursesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $course = course::findorfail($id);
+         $course->delete();
+         return redirect()->route('courses.index')->with('msg','Deleted successsfully.....');
+
     }
 }
+
+

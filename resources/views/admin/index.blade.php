@@ -178,9 +178,9 @@
           </nav>
         </div>
         <div class="card-body collapse show" id="card5">
-          <h4 class="card-title">Special title treatment</h4>
+          <h4 class="card-title">Get all information about Courses</h4>
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <a href="{{ route('courses.index') }}" class="btn btn-primary">Go To Courses</a>
         </div>
       </div>
     </div>

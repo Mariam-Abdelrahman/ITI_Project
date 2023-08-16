@@ -52,7 +52,7 @@
                 </a>
               </li>
               <li class="sidebar-nav-item">
-                <a href="./layouts/tables_data.html" class="sidebar-nav-link">
+                <a href="{{ route('courses.index') }}" class="sidebar-nav-link">
                   <span class="sidebar-nav-abbr">
                     CO
                   </span>
@@ -130,7 +130,7 @@
               </a>
             </li>
             <li class="sidebar-nav-item">
-              <a href="./layouts/form_elements.html" class="sidebar-nav-link">
+              <a href="{{ route('courses.create') }}" class="sidebar-nav-link">
                 <span class="sidebar-nav-abbr">
                   CO
                 </span>
