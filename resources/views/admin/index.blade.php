@@ -54,16 +54,16 @@
           <div class="card-header-title">Instructors</div>
 
           <nav class="card-header-actions">
-            <a class="card-header-action" data-toggle="collapse" href="#card1" aria-expanded="false" aria-controls="card1">
+            <a class="card-header-action" data-toggle="collapse" href="#card2" aria-expanded="false" aria-controls="card2">
               <i data-feather="minus-circle"></i>
             </a>
 
             <div class="dropdown">
-              <a class="card-header-action" href="#" role="button" id="card1Settings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="card-header-action" href="#" role="button" id="card2Settings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i data-feather="settings"></i>
               </a>
 
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="card1Settings">
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="card2Settings">
                 <a class="dropdown-item" href="#">Action</a>
                 <a class="dropdown-item" href="#">Another action</a>
                 <a class="dropdown-item" href="#">Something else here</a>
@@ -86,19 +86,19 @@
     <div class="col-lg-6">
       <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
-          <div class="card-header-title">Featured</div>
+          <div class="card-header-title">departments</div>
 
           <nav class="card-header-actions">
-            <a class="card-header-action" data-toggle="collapse" href="#card1" aria-expanded="false" aria-controls="card1">
+            <a class="card-header-action" data-toggle="collapse" href="#card3" aria-expanded="false" aria-controls="card3">
               <i data-feather="minus-circle"></i>
             </a>
 
             <div class="dropdown">
-              <a class="card-header-action" href="#" role="button" id="card1Settings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="card-header-action" href="#" role="button" id="card3Settings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i data-feather="settings"></i>
               </a>
 
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="card1Settings">
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="card3Settings">
                 <a class="dropdown-item" href="#">Action</a>
                 <a class="dropdown-item" href="#">Another action</a>
                 <a class="dropdown-item" href="#">Something else here</a>
@@ -110,10 +110,43 @@
             </a>
           </nav>
         </div>
-        <div class="card-body collapse show" id="card1">
-          <h4 class="card-title">Special title treatment</h4>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div class="card-body collapse show" id="card3">
+          <h4 class="card-title">Get all information about departments</h4>
+         
+          <a href="{{ route('departments.index') }}" class="btn btn-primary">Go To Departments</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <div class="card-header-title">Topics</div>
+
+          <nav class="card-header-actions">
+            <a class="card-header-action" data-toggle="collapse" href="#card4" aria-expanded="false" aria-controls="card4">
+              <i data-feather="minus-circle"></i>
+            </a>
+
+            <div class="dropdown">
+              <a class="card-header-action" href="#" role="button" id="card4Settings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i data-feather="settings"></i>
+              </a>
+
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="card4Settings">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </div>
+
+            <a href="#" class="card-header-action">
+              <i data-feather="x-circle"></i>
+            </a>
+          </nav>
+        </div>
+        <div class="card-body collapse show" id="card4">
+          <h4 class="card-title">Get all information about topics</h4>
+          <a href="{{ route('topics.index') }}" class="btn btn-primary">Go To Topics</a>
         </div>
       </div>
     </div>
@@ -123,16 +156,16 @@
           <div class="card-header-title">Featured</div>
 
           <nav class="card-header-actions">
-            <a class="card-header-action" data-toggle="collapse" href="#card1" aria-expanded="false" aria-controls="card1">
+            <a class="card-header-action" data-toggle="collapse" href="#card5" aria-expanded="false" aria-controls="card5">
               <i data-feather="minus-circle"></i>
             </a>
 
             <div class="dropdown">
-              <a class="card-header-action" href="#" role="button" id="card1Settings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="card-header-action" href="#" role="button" id="card5Settings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i data-feather="settings"></i>
               </a>
 
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="card1Settings">
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="card5Settings">
                 <a class="dropdown-item" href="#">Action</a>
                 <a class="dropdown-item" href="#">Another action</a>
                 <a class="dropdown-item" href="#">Something else here</a>
@@ -144,41 +177,7 @@
             </a>
           </nav>
         </div>
-        <div class="card-body collapse show" id="card1">
-          <h4 class="card-title">Special title treatment</h4>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-6">
-      <div class="card">
-        <div class="card-header d-flex justify-content-between align-items-center">
-          <div class="card-header-title">Featured</div>
-
-          <nav class="card-header-actions">
-            <a class="card-header-action" data-toggle="collapse" href="#card1" aria-expanded="false" aria-controls="card1">
-              <i data-feather="minus-circle"></i>
-            </a>
-
-            <div class="dropdown">
-              <a class="card-header-action" href="#" role="button" id="card1Settings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i data-feather="settings"></i>
-              </a>
-
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="card1Settings">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </div>
-
-            <a href="#" class="card-header-action">
-              <i data-feather="x-circle"></i>
-            </a>
-          </nav>
-        </div>
-        <div class="card-body collapse show" id="card1">
+        <div class="card-body collapse show" id="card5">
           <h4 class="card-title">Special title treatment</h4>
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
           <a href="#" class="btn btn-primary">Go somewhere</a>

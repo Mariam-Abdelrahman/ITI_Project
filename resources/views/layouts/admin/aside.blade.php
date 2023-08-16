@@ -42,7 +42,7 @@
                 </a>
               </li>
               <li class="sidebar-nav-item">
-                <a href="./layouts/tables_data.html" class="sidebar-nav-link">
+                <a href="{{ route('topics.index') }}" class="sidebar-nav-link">
                   <span class="sidebar-nav-abbr">
                     TO
                   </span>
@@ -62,7 +62,7 @@
                 </a>
               </li>
               <li class="sidebar-nav-item">
-                <a href="./layouts/tables_data.html" class="sidebar-nav-link">
+                <a href="{{ route('departments.index') }}" class="sidebar-nav-link">
                   <span class="sidebar-nav-abbr">
                     DE
                   </span>
@@ -109,7 +109,7 @@
               </a>
             </li>
             <li class="sidebar-nav-item">
-              <a href="./layouts/form_elements.html" class="sidebar-nav-link">
+              <a href="{{ route('topics.create') }}" class="sidebar-nav-link">
                 <span class="sidebar-nav-abbr">
                   TO
                 </span>
@@ -129,7 +129,7 @@
               </a>
             </li>
             <li class="sidebar-nav-item">
-              <a href="./layouts/form_elements.html" class="sidebar-nav-link">
+              <a href="{{ route('departments.create') }}" class="sidebar-nav-link">
                 <span class="sidebar-nav-abbr">
                   DE
                 </span>

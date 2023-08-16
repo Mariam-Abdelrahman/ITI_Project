@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Department;
 use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
@@ -14,7 +15,9 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
+        $data=Department::get();
+        return view('admin.departments.index',['data'=>$data]);
+        
     }
 
     /**
@@ -24,7 +27,10 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        //
+        $data=Department::get();
+
+
+        return view('admin.departments.create',['data'=>$data]);
     }
 
     /**
@@ -35,7 +41,14 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Department::create([
+            'id'=>$request->id,
+            'name'=>$request->name,
+          
+   
+           ]);
+           return redirect()->back()->with('msg','Added successsfully.....');
+   
     }
 
     /**
@@ -46,7 +59,8 @@ class DepartmentController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Department::findorfail($id);
+        return view('admin.departments.show',['data'=>$data]);
     }
 
     /**
@@ -57,7 +71,8 @@ class DepartmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Department::findorfail($id);
+        return view('admin.departments.edit',['data'=>$data]); 
     }
 
     /**
@@ -69,7 +84,12 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $dep = Department::findorfail($id);
+        $dep->update([
+        'id'=>$request->id,
+        'name'=>$request->name,
+        ]);
+        return redirect()->route('departments.index')->with('msg','Updated successsfully.....');
     }
 
     /**
@@ -80,6 +100,8 @@ class DepartmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $dep=Department::findorfail($id);
+        $dep->delete();
+        return redirect()->route('departments.index')->with('msg','deleted..');
     }
 }

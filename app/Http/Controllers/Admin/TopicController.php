@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Topic;
 use Illuminate\Http\Request;
 
 class TopicController extends Controller
@@ -14,7 +15,8 @@ class TopicController extends Controller
      */
     public function index()
     {
-        //
+        $data=Topic::get();
+        return view('admin.topics.index',['data'=>$data]);
     }
 
     /**
@@ -24,7 +26,10 @@ class TopicController extends Controller
      */
     public function create()
     {
-        //
+        $data=Topic::get();
+    
+
+        return view('admin.topics.create',['data'=>$data]);
     }
 
     /**
@@ -35,7 +40,14 @@ class TopicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Topic::create([
+            'id'=>$request->id,
+            'name'=>$request->name,
+          
+   
+           ]);
+           return redirect()->back()->with('msg','Added successsfully.....');
+   
     }
 
     /**
@@ -46,7 +58,8 @@ class TopicController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Topic::findorfail($id);
+        return view('admin.topics.show',['data'=>$data]);
     }
 
     /**
@@ -57,8 +70,10 @@ class TopicController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Topic::findorfail($id);
+        return view('admin.topics.edit',['data'=>$data]); 
     }
+    
 
     /**
      * Update the specified resource in storage.
@@ -69,7 +84,12 @@ class TopicController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $dep = Topic::findorfail($id);
+        $dep->update([
+        'id'=>$request->id,
+        'name'=>$request->name,
+        ]);
+        return redirect()->route('topics.index',$dep['id'])->with('msg','Updated successsfully.....');
     }
 
     /**
@@ -80,6 +100,9 @@ class TopicController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $dep=Topic::findorfail($id);
+        $dep->delete();
+        return redirect()->route('topics.index')->with('msg','deleted..');
     }
+
 }
