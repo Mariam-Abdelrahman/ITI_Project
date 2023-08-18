@@ -54,18 +54,46 @@
                       <div class="form-group">
                         <label class="form-label" for="exampleInputEmail1">name</label>
                         <input type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Enter Name" name="name" value="{{ $data['name'] }}">
+                        @error('name')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                       <div class="form-group">
                         <label class="form-label" for="exampleInputEmail1">Salary</label>
                         <input type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Enter Salary" name="salary" value="{{ $data['salary'] }}">
+                        @error('salary')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                       <div class="form-group">
                         <label class="form-label" for="exampleInputPassword1">Address</label>
                         <input type="text" class="form-control"  placeholder="Adress" name="address" value="{{ $data['address'] }}">
-                      </div>
+                        @error('address')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
                       <div class="form-group">
                         <label class="form-label" for="exampleInputPassword1">Hour Rate</label>
                         <input type="number" class="form-control"  placeholder="Hour Rate" name="hourRate" value="{{ $data['hourRate'] }}">
+                        @error('hourRate')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                      </div>
+                      <div class="form-group">
+                        <label class="form-label" for="exampleInputPassword1">Department</label>
+                        <select name="department_id">
+                            <option value="none" >select department</option>
+                            @foreach ( $deptData as $dept)
+                               <option value="{{ $dept['id'] }}"
+                               @if($data->department_id == $dept->id)
+                                selected
+                                @endif>
+                                {{ $dept['name'] }}</option>
+                            @endforeach
+                        </select>
+                        @error('department_id')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                         <small id="emailHelp" class="form-text text-muted">We'll never share your data with anyone else.</small>
 
                       </div>

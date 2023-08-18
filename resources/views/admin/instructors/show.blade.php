@@ -33,6 +33,18 @@
 
                        </tr>
                        <tr>
+                        <th scope="col">Department</th>
+                        <td>{{ $dept['name'] }}</td>
+                       </tr>
+                       <tr>
+                        <tr>
+                            <th>Courses</th>
+                            <td>
+                                @foreach ($instructor->courses as $course)
+                                    <li>{{ $course->name}}</li>
+                                @endforeach
+                            </td>
+                        </tr>
                           <th scope="col">Salary</th>
                           <td>{{ $instructor['salary'] }}</td>
 
@@ -46,6 +58,7 @@
                         <th scope="col">Adress</th>
                         <td>{{ $instructor['address'] }}</td>
                        </tr>
+
                         <tr>
                            <th scope="col">Actions</th>
 

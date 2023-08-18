@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\InstructorRequest;
+use App\Models\Department;
 use App\Models\Instructor;
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
 
 class InstructorController extends Controller
 {
@@ -15,9 +17,10 @@ class InstructorController extends Controller
      */
     public function index()
     {
-
+        $depts=Department::select('id','name')->get();
+        // return $dept;
         $instructors = Instructor::all();
-        return view('admin.instructors.index',['instructors'=>$instructors]);
+        return view('admin.instructors.index',['instructors'=>$instructors,'depts' =>$depts]);
 
     }
 
@@ -28,8 +31,9 @@ class InstructorController extends Controller
      */
     public function create()
     {
+        $deptData=Department::select('id','name')->get(); // select * from employees
+        return view('admin.instructors.create',['deptData'=>$deptData]);
 
-        return view('admin.instructors.create');
 
     }
 
@@ -39,18 +43,18 @@ class InstructorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(InstructorRequest $request)
     {
-
 
         Instructor::create([
             'name'=> $request->name,
             'salary'=> $request->salary,
             'address'=> $request->address,
             'hourRate'=> $request->hourRate,
+            'department_id'=> $request->department_id,
         ]);
 
-        return redirect()->back()->with('msg','Added..');
+        return redirect()->back()->with('msg','Added Successfuly..');
 
     }
 
@@ -64,7 +68,10 @@ class InstructorController extends Controller
     {
 
         $instructor=Instructor::findorfail($id);
-        return view('admin.instructors.show',['instructor'=>$instructor]);
+        $deptID = $instructor->department_id;
+        $dept=Department::findorfail($deptID);
+
+        return view('admin.instructors.show',['instructor'=>$instructor, 'dept' =>$dept]);
 
 
 
@@ -81,7 +88,8 @@ class InstructorController extends Controller
     public function edit($id)
     {
         $data=Instructor::findorfail($id);
-        return view('admin.instructors.edit',['data'=>$data]);
+        $deptData=Department::select('id','name')->get(); // select * from employees
+        return view('admin.instructors.edit',['data'=>$data,'deptData'=>$deptData]);
     }
 
     /**
@@ -91,7 +99,7 @@ class InstructorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(InstructorRequest $request, $id)
     {
         $instructor=Instructor::findorfail($id);
         $instructor->update([
@@ -99,6 +107,7 @@ class InstructorController extends Controller
             'salary'=> $request->salary,
             'address'=> $request->address,
             'hourRate'=> $request->hourRate,
+            'department_id'=> $request->department_id,
         ]);
 
         return redirect()->route('instructors.edit',$instructor['id'])->with('msg','updated..');

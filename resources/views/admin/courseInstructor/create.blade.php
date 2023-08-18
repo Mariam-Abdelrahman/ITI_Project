@@ -7,13 +7,13 @@
               <ol class="breadcrumb adminx-page-breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                 <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                <li class="breadcrumb-item active  aria-current="page">ADD Instructor</li>
+                <li class="breadcrumb-item active  aria-current="page">ADD instructors to course</li>
               </ol>
             </nav>
            @endsection
            @section('content')
             <div class="pb-3">
-              <h1>Instructor form</h1>
+              <h1>Instructor course form</h1>
             </div>
             @if(Session::has('msg'))
             <div class="alert alert-success">{{ Session::get('msg') }}</div>
@@ -48,49 +48,40 @@
                   </div>
 
                   <div class="card-body collapse show" id="card1">
-                    <form action="{{ route('instructors.store') }}" enctype="multipart/form-data" method="post">
+                    <form action="{{ route('courseInstructor.store') }}" enctype="multipart/form-data" method="post">
                     @csrf
-                      <div class="form-group">
-                        <label class="form-label" for="exampleInputEmail1">name</label>
-                        <input type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Enter Name" name="name">
-                        @error('name')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                      </div>
-                      <div class="form-group">
-                        <label class="form-label" for="exampleInputEmail1">Salary</label>
-                        <input type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Enter Salary" name="salary">
-                        @error('salary')
-                         <div class="alert alert-danger">{{ $message }}</div>
-                       @enderror
-                      </div>
-                      <div class="form-group">
-                        <label class="form-label" for="exampleInputPassword1">Address</label>
-                        <input type="text" class="form-control"  placeholder="Adress" name="address">
-                        @error('address')
-                       <div class="alert alert-danger">{{ $message }}</div>
-                       @enderror
-                      </div>
-                      <div class="form-group">
-                        <label class="form-label" for="exampleInputPassword1">Hour Rate</label>
-                        <input type="number" class="form-control"  placeholder="Hour Rate" name="hourRate">
-                        @error('hourRate')
-                           <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
 
-                      </div>
                       <div class="form-group">
-                        <label class="form-label" for="exampleInputPassword1">Department</label>
-                        <select name="department_id">
-                            <option value="none" >select department</option>
-                            @foreach ( $deptData as $data)
-                               <option value="{{ $data['id'] }}" >{{ $data['name'] }}</option>
+                        <label class="form-label" for="exampleInputPassword1">Instructor</label>
+                        <select name="instructor_id">
+                            <option value="none" >select Instructor</option>
+                            @foreach ( $instructorS as $instructor)
+                               <option value="{{ $instructor['id'] }}" >{{ $instructor['name'] }}</option>
                             @endforeach
                         </select>
-                        @error('department_id')
+                        @error('instructor_id')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your data with anyone else.</small>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="form-label" for="exampleInputPassword1">Course</label>
+                        <select name="course_id">
+                            <option value="none" >select course</option>
+                            @foreach ( $courses as $course)
+                               <option value="{{ $course['id'] }}" >{{ $course['name'] }}</option>
+                            @endforeach
+                        </select>
+                        @error('course_id')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                      </div>
+                      <div class="form-group">
+                        <label class="form-label" for="exampleInputEmail1">Evaluation</label>
+                        <input type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Enter Name" name="evaluation">
+                        @error('evaluation')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                       </div>
 
                       <button type="submit" class="btn btn-primary">ADD</button>

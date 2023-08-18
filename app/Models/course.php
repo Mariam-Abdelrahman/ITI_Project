@@ -14,4 +14,8 @@ class course extends Model
         "duration",
         "discribtion"
         ];
+
+        public function instructor(){ //
+            return $this->belongsToMany(Instructor::class,'course_instructor','course_id','instructor_id','id','id');
+        }
 }

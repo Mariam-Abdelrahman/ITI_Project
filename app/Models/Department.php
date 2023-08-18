@@ -10,4 +10,8 @@ class Department extends Model
     use HasFactory;
     protected $fillable = ['id','name'];
 
+    public function instructor(){
+        return $this->hasMany(Instructor::class,'id');
+    }
+
 }

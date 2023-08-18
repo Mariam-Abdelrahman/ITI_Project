@@ -34,7 +34,7 @@
                           <th scope="col">ID</th>
                           <th scope="col">Name</th>
                           <th scope="col">Salary</th>
-                          <th scope="col">Adress</th>
+                          <th scope="col">Department</th>
                           <th scope="col">Actions</th>
                         </tr>
                       </thead>
@@ -50,7 +50,12 @@
                             <td>{{ $instructor['id'] }}</td>
                             <td>{{ $instructor['name'] }}</td>
                             <td>{{ $instructor['salary'] }}</td>
-                            <td>{{ $instructor['address'] }}</td>
+
+                            @foreach ($depts as $dept )
+                            @if($instructor['department_id'] == $dept->id)
+                            <td>{{ $dept->name }}</td>
+                            @endif
+                            @endforeach
                           <td>
                             <a href="{{ route('instructors.show',$instructor['id']) }}" class="btn btn-sm btn-primary">show</a>
                             <a href="{{ route('instructors.edit',$instructor['id']) }}" class="btn btn-sm btn-success">Edit</a>
