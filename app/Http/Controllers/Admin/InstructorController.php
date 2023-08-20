@@ -73,9 +73,6 @@ class InstructorController extends Controller
 
         return view('admin.instructors.show',['instructor'=>$instructor, 'dept' =>$dept]);
 
-
-
-
     }
 
     /**
